@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MauiCRUD.Data;
 using MauiCRUD.Models;
 using System.Collections.ObjectModel;
@@ -61,5 +62,10 @@ namespace MauiCRUD.ViewModels
                 BusyText = "Processing...";
             }
         }
+
+        [RelayCommand]
+        private void SetOperatingProducts(Product? product) => OperatingProduct = product ?? new()
+        
+
     }
 }

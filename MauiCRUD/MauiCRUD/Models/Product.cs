@@ -19,7 +19,7 @@ namespace MauiCRUD.Models
             }
             else if(Price <= 0)
             {
-                return (false, $"{nameof(Price)} should be greater than 0.");
+                return (false, $"{nameof(Price)} should be greater than 0."); []
             }
             return (true, null);
         }
