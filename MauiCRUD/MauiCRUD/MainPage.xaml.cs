@@ -1,24 +1,24 @@
-﻿namespace MauiCRUD
+﻿using Android.App;
+using Java.Lang;
+using MauiCRUD.ViewModels;
+
+namespace MauiCRUD
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private readonly ProductsViewModel _productViewModel;
 
-        public MainPage()
+        public MainPage(ProductsViewModel productsViewModel)
         {
             InitializeComponent();
+            BindingContext = productsViewModel;
+            _productViewModel = productsViewModel;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        protected async override void OnAppearing()
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            base.OnAppearing();
+            await _productViewModel.LoadProductsAsync();
         }
     }
 
